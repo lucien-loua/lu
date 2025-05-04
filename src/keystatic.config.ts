@@ -3,6 +3,7 @@ import { config, collection, fields, singleton } from '@keystatic/core';
 export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
 export default config({
+	
   storage: {
     kind: 'github',
 		repo: {

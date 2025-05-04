@@ -5,8 +5,6 @@ import { cache } from 'react';
 import { cookies, draftMode } from 'next/headers';
 import { GITHUB_APP } from "./contant";
 
-export const localReader = createReader(process.cwd(), keystaticConfig);
-
 export const reader = cache(
   async () => {
   try {
@@ -26,5 +24,5 @@ export const reader = cache(
   } catch (error) {
     console.error("Reader error during request scope check:", error);
   }
-  return localReader;
+  return createReader(process.cwd(), keystaticConfig);
 });

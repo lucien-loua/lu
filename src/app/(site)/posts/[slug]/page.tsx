@@ -1,6 +1,6 @@
 import React, { use } from 'react';
 import Markdoc from '@markdoc/markdoc';
-import { localReader, reader } from '@/lib/reader';
+import { reader } from '@/lib/reader';
 import { markdocConfig } from '@/keystatic.config';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -35,12 +35,7 @@ export default async function Post(props: Props) {
     </main>
   );
 }
-export async function generateStaticParams() {
-  const posts = await localReader.collections.posts.list()
-  return posts.map((post) => ({
-    slug: post,
-  }))
-}
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
