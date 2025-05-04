@@ -85,7 +85,7 @@ export function Footer() {
 					</TextLoop>
 				</a>
 				<div className="flex items-center gap-2 text-xs text-zinc-400">
-						<ThemeSwitch />
+					<ThemeSwitch />
 				</div>
 			</div>
 		</footer>

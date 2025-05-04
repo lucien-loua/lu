@@ -13,8 +13,8 @@ export const size = {
 export async function generateImageMetadata(props: Props) {
 	const params = await props.params;
 	const slug = params.slug;
-
-	const post = await reader.collections.posts.read(slug)
+	const r = await reader()
+	const post = await r.collections.posts.read(slug)
 
 	if (!post) {
 		return {
@@ -23,6 +23,7 @@ export async function generateImageMetadata(props: Props) {
 		}
 	}
 	return [{
+		id: slug,
 		size,
 		alt: post.title,
 		contentType: 'image/png',
@@ -32,8 +33,8 @@ export async function generateImageMetadata(props: Props) {
 export default async function Image(props: Props) {
 	const params = await props.params;
 	const slug = params.slug;
-
-	const post = await reader.collections.posts.read(slug)
+	const r = await reader()
+	const post = await r.collections.posts.read(slug)
 
 	if (!post) {
 		return new ImageResponse(<div>Post not found</div>)
@@ -59,7 +60,7 @@ export default async function Image(props: Props) {
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
-					opacity: 0.07,
+					opacity: 0.05,
 				}}
 			>
 				{Array.from({ length: 120 }).map((_, i) => (
@@ -75,8 +76,8 @@ export default async function Image(props: Props) {
 					/>
 				))}
 			</div>
-			<div>
-				<h1>{post.title}</h1>
+			<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+				<h1 style={{ fontSize: '58px', fontWeight: 'bold', color: 'white', textAlign: 'center' }}>{post.title}</h1>
 			</div>
 		</div>,
 		{

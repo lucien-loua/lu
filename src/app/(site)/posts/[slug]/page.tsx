@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { use } from 'react';
 import Markdoc from '@markdoc/markdoc';
-import { reader } from '@/lib/reader';
+import { localReader, reader } from '@/lib/reader';
 import { markdocConfig } from '@/keystatic.config';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -12,8 +12,8 @@ type Props = {
 export default async function Post(props: Props) {
   const params = await props.params;
   const { slug } = params;
-
-  const post = await reader.collections.posts.read(slug);
+  const get = await reader()
+  const post = await get.collections.posts.read(slug);
 
   if (!post) {
     notFound();
@@ -35,18 +35,17 @@ export default async function Post(props: Props) {
     </main>
   );
 }
-
 export async function generateStaticParams() {
-  const slugs = await reader.collections.posts.list();
-  return slugs.map(slug => ({
-    slug,
-  }));
+  const posts = await localReader.collections.posts.list()
+  return posts.map((post) => ({
+    slug: post,
+  }))
 }
-
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
-  const post = await reader.collections.posts.read(slug);
+  const r = await reader()
+  const post = await r.collections.posts.read(slug);
 
   if (!post) {
     return {

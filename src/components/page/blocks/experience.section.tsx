@@ -3,7 +3,8 @@ import { reader } from "@/lib/reader";
 import { Section } from "@/components/layout/section";
 
 export async function ExperienceSection() {
-	const experiences = await reader.collections.experience.all();
+	const get = await reader()
+	const experiences = await get.collections.experience.all();
 	return (
 		<Section>
 			<h3 className="mb-5 text-lg font-medium">Experience</h3>

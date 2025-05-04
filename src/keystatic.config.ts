@@ -4,7 +4,11 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'github',
+		repo: {
+			owner: 'lucien-loua',
+			name: 'lu',
+		},
   },
   collections: {
     posts: collection({
@@ -12,6 +16,7 @@ export default config({
       slugField: 'title',
       path: 'src/contents/posts/*',
       format: { contentField: 'content' },
+			previewUrl: `/preview/start?branch={branch}&to=/posts/{slug}`,
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
 				description: fields.text({
