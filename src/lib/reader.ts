@@ -22,7 +22,7 @@ export const reader = cache(
       }
     }
   } catch (error) {
-    console.error("Reader error during request scope check:", error);
+    // ignore
   }
   return createReader(process.cwd(), keystaticConfig);
 });
