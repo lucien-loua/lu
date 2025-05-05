@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const EXAMPLES_DIR = path.join(__dirname, '../src/examples');
+const EXAMPLES_DIR = path.join(__dirname, '../src/showcase');
 const SHOWCASE_DIR = path.join(__dirname, '../src/contents/showcase');
 
 if (!fs.existsSync(SHOWCASE_DIR)) {

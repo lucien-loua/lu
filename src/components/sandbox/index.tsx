@@ -36,7 +36,7 @@ export const SandBox = ({
       return;
     }
 
-    import(`@/examples/${path}.tsx`).then(
+    import(`@/showcase/${path}.tsx`).then(
       (module) => {
         setComponent(() => module.default);
       }

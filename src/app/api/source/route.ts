@@ -12,7 +12,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const fullPath = path.join(process.cwd(), 'src', 'examples', `${filePath}.tsx`);
+    const fullPath = path.join(process.cwd(), 'src', 'showcase', `${filePath}.tsx`);
     const sourceCode = await fs.readFile(fullPath, 'utf-8');
     return new NextResponse(sourceCode);
   } catch {

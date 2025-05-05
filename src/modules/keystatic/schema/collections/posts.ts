@@ -1,4 +1,4 @@
-import { SandBox } from '@/components/block.components';
+import { SandBox } from '@/modules/keystatic/blocks';
 import { collection, fields } from '@keystatic/core';
 
 export const posts = collection({

@@ -3,10 +3,7 @@ import { reader } from '@/lib/reader';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { MAIN_URL } from '@/lib/contant';
-import Markdoc from '@markdoc/markdoc';
-import { markdocConfig } from '@/keystatic.config';
-import { SandBox } from '@/components/sandbox';
-import { resolveNodes } from '@/modules/markdoc/transformers';
+import { MarkdocRenderer } from '@/modules/markdoc/renderer';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,23 +19,10 @@ export default async function Post(props: Props) {
   }
   const { node } = await post.content();
 
-  const errors = Markdoc.validate(node, markdocConfig);
-  if (errors.length) {
-    console.error(errors);
-    throw new Error('Invalid content');
-  }
-  const renderable = Markdoc.transform(node, markdocConfig);
-
-  const resolvedNode = await resolveNodes(renderable);
-
   return (
     <main className="prose dark:prose-invert">
       <h1>{post.title}</h1>
-      {Markdoc.renderers.react(resolvedNode as any, React, {
-        components: {
-          SandBox,
-        }
-      })}
+      <MarkdocRenderer node={node} />
     </main>
   );
 }

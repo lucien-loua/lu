@@ -39,7 +39,7 @@ function ThemeSwitch() {
 
 	return (
 		<AnimatedBackground
-			className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
+			className="pointer-events-none rounded-md bg-secondary"
 			defaultValue={theme}
 			transition={{
 				type: "spring",
@@ -55,12 +55,13 @@ function ThemeSwitch() {
 				return (
 					<button
 						key={theme.id}
-						className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+						className="inline-flex h-7 w-7 items-center justify-center text-muted-foreground transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-foreground"
 						type="button"
 						aria-label={`Switch to ${theme.label} theme`}
 						data-id={theme.id}
 					>
 						{theme.icon}
+
 					</button>
 				);
 			})}
@@ -70,21 +71,21 @@ function ThemeSwitch() {
 export function Footer() {
 
 	return (
-		<footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
+		<footer className="mt-24 border-t px-2 py-4">
 			<div className="flex items-center justify-between">
 				<a
 					href="https://github.com/lucien-loua"
 					target="_blank"
 					rel="noreferrer"
 				>
-					<TextLoop className="text-xs text-zinc-500">
+					<TextLoop className="text-xs text-muted-foreground">
 						<span>
 							© {new Date().getFullYear()} Lucien Loua.
 						</span>
 						<span>Web Interface Designer</span>
 					</TextLoop>
 				</a>
-				<div className="flex items-center gap-2 text-xs text-zinc-400">
+				<div className="flex items-center gap-2 text-xs text-muted-foreground">
 					<ThemeSwitch />
 				</div>
 			</div>

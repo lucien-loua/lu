@@ -1,10 +1,12 @@
 import { config, fields } from '@keystatic/core';
-import { projects } from './schema/collections/projects';
-import { experience } from './schema/collections/experience';
-import { socialLinks } from './schema/singletons/social-links';
-import { showcase } from './schema/collections/showcase';
-import { SandBox } from './components/block.components';
-import { posts } from './schema/collections/posts';
+import {
+  projects,
+  experience,
+  socialLinks,
+  showcase,
+  posts
+} from '@/modules/keystatic/schema';
+import { SandBox } from '@/modules/keystatic/blocks';
 
 export const markdocConfig = fields.markdoc.createMarkdocConfig({
   components: {
