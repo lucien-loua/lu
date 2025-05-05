@@ -1,0 +1,17 @@
+import { reader } from '@/lib/reader';
+
+type Resolver = (
+  attrs: Record<string, unknown>,
+) => Promise<Record<string, unknown>>;
+
+async function plugin(slug: string) {
+  const showcases = await reader().collections.showcase.all();
+  const showcase = showcases.find(e => e.slug === slug);
+  return showcase?.entry.path || '';
+}
+
+export const resolvers: Record<string, Resolver> = {
+  SandBox: async (attrs) => ({
+    path: typeof attrs.showcase === 'string' ? await plugin(attrs.showcase) : '',
+  }),
+};

@@ -4,8 +4,7 @@ import { reader } from "@/lib/reader";
 import Link from "next/link";
 
 export async function PostsSection() {
-	const get = await reader()
-	const posts = await get.collections.posts.all();
+	const posts = await reader().collections.posts.all();
 	return (
 		<Section>
 			<h3 className="mb-3 text-lg font-medium">Posts</h3>

@@ -1,10 +1,12 @@
 import React from 'react';
-import Markdoc from '@markdoc/markdoc';
 import { reader } from '@/lib/reader';
-import { markdocConfig } from '@/keystatic.config';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { MAIN_URL } from '@/lib/contant';
+import Markdoc from '@markdoc/markdoc';
+import { markdocConfig } from '@/keystatic.config';
+import { SandBox } from '@/components/sandbox';
+import { resolveNodes } from '@/modules/markdoc/transformers';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -13,8 +15,7 @@ type Props = {
 export default async function Post(props: Props) {
   const params = await props.params;
   const { slug } = params;
-  const get = await reader()
-  const post = await get.collections.posts.read(slug);
+  const post = await reader().collections.posts.read(slug);
 
   if (!post) {
     notFound();
@@ -26,19 +27,23 @@ export default async function Post(props: Props) {
     console.error(errors);
     throw new Error('Invalid content');
   }
-
   const renderable = Markdoc.transform(node, markdocConfig);
+
+  const resolvedNode = await resolveNodes(renderable);
 
   return (
     <main className="prose dark:prose-invert">
       <h1>{post.title}</h1>
-      {Markdoc.renderers.react(renderable, React)}
+      {Markdoc.renderers.react(resolvedNode as any, React, {
+        components: {
+          SandBox,
+        }
+      })}
     </main>
   );
 }
 export async function generateStaticParams() {
-  const get = await reader()
-  const posts = await get.collections.posts.list()
+  const posts = await reader().collections.posts.list()
   return posts.map((post) => ({
     slug: post,
   }))
@@ -46,8 +51,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
-  const get = await reader()
-  const post = await get.collections.posts.read(slug);
+  const post = await reader().collections.posts.read(slug);
 
   if (!post) {
     return {

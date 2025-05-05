@@ -40,8 +40,7 @@ function MagneticSocialLink({
 }
 
 export async function ContactSection() {
-	const get = await reader()
-	const data = await get.singletons.socialLinks.read();
+	const data = await reader().singletons.socialLinks.read();
 	const socialLinks = data?.links ?? [];
 	return (
 		<Section>

@@ -59,8 +59,7 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 	);
 }
 export async function ProjectsSection() {
-	const get = await reader()
-	const projects = await get.collections.projects.all();
+	const projects = await reader().collections.projects.all();
 	return (
 		<Section>
 			<h3 className="mb-5 text-lg font-medium">Projects</h3>

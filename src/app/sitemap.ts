@@ -3,8 +3,7 @@ import { reader } from '@/lib/reader'
 import type { MetadataRoute } from 'next'
  
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const git = await reader()
-  const slugs = await git.collections.posts.list()
+  const slugs = await reader.collections.posts.list()
 
   return [
     {
