@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import React from 'react';
 import Markdoc from '@markdoc/markdoc';
 import { reader } from '@/lib/reader';
 import { markdocConfig } from '@/keystatic.config';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { MAIN_URL } from '@/lib/contant';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -56,6 +57,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-
+    openGraph: {
+      images: [
+        {
+          url: `${MAIN_URL}/api/og?title=${post.title}`,
+        },
+      ],
+      title: post.title,
+      description: post.description,
+      siteName: 'Blog',
+    },
   };
 }
