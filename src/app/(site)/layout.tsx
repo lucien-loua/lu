@@ -1,12 +1,10 @@
 import type { ReactNode } from 'react';
-import '../globals.css';
 import { ThemeProvider } from 'next-themes';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { Geist, Geist_Mono } from "next/font/google";
 import { Metadata, Viewport } from 'next';
 import { MAIN_URL } from '@/lib/contant';
-import { EndPreview } from './preview/end/button';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -30,11 +28,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
+export default async function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+        className={`${geist.variable} ${geistMono.variable}  tracking-tight antialiased`}
       >
         <ThemeProvider
           enableSystem={true}
@@ -46,7 +44,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
               <Header />
               {children}
-              <EndPreview />
               <Footer />
             </div>
           </div>

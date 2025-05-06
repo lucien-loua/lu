@@ -14,7 +14,7 @@ const VARIANTS_CONTAINER = {
 export function PageLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<motion.main
-			className="space-y-20"
+			className="space-y-14"
 			variants={VARIANTS_CONTAINER}
 			initial="hidden"
 			animate="visible"

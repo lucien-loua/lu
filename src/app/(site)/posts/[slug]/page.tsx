@@ -1,9 +1,9 @@
-import React, { use } from 'react';
-import Markdoc from '@markdoc/markdoc';
-import { localReader, reader } from '@/lib/reader';
-import { markdocConfig } from '@/keystatic.config';
+import React from 'react';
+import { reader } from '@/lib/reader';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { MAIN_URL } from '@/lib/contant';
+import { MarkdocRenderer } from '@/modules/markdoc/renderer';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -12,31 +12,22 @@ type Props = {
 export default async function Post(props: Props) {
   const params = await props.params;
   const { slug } = params;
-  const get = await reader()
-  const post = await get.collections.posts.read(slug);
+  const post = await reader().collections.posts.read(slug);
 
   if (!post) {
     notFound();
   }
   const { node } = await post.content();
 
-  const errors = Markdoc.validate(node, markdocConfig);
-  if (errors.length) {
-    console.error(errors);
-    throw new Error('Invalid content');
-  }
-
-  const renderable = Markdoc.transform(node, markdocConfig);
-
   return (
-    <main className="prose dark:prose-invert">
+    <main className="prose prose-neutral dark:prose-invert prose-h1:font-medium prose-h2:mt-12 prose-h2:scroll-m-20 prose-h2:text-lg prose-h2:font-medium prose-h3:text-base prose-h3:font-medium prose-h4:font-medium prose-h5:text-base prose-h5:font-medium prose-h6:text-base prose-h6:font-medium prose-strong:font-medium prose-code:bg-muted prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:font-mono prose-code:text-sm prose-code:rounded-sm prose-code:before:content-none prose-code:after:content-none">
       <h1>{post.title}</h1>
-      {Markdoc.renderers.react(renderable, React)}
+      <MarkdocRenderer node={node} />
     </main>
   );
 }
 export async function generateStaticParams() {
-  const posts = await localReader.collections.posts.list()
+  const posts = await reader().collections.posts.list()
   return posts.map((post) => ({
     slug: post,
   }))
@@ -44,8 +35,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
-  const r = await reader()
-  const post = await r.collections.posts.read(slug);
+  const post = await reader().collections.posts.read(slug);
 
   if (!post) {
     return {
@@ -55,6 +45,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-
+    openGraph: {
+      images: [
+        {
+          url: `${MAIN_URL}/api/og?title=${post.title}`,
+        },
+      ],
+      title: post.title,
+      description: post.description,
+      siteName: 'Blog',
+    },
   };
 }
