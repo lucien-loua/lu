@@ -13,7 +13,7 @@ import { PreviewCode } from './code';
 import { PreviewRender } from './render';
 import React from 'react';
 
-type PreviewProps = {
+type SandBoxProps = {
   showcase: string | null;
   type?: 'component' | 'block';
   code?: string;
@@ -23,7 +23,7 @@ export const SandBox = ({
   showcase = '',
   type = 'component',
   code = '',
-}: PreviewProps) => {
+}: SandBoxProps) => {
   const [Component, setComponent] = React.useState<React.ComponentType | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [componentCode, setComponentCode] = React.useState(code);
@@ -112,12 +112,7 @@ export const SandBox = ({
 
   return (
     <div
-      className={cn(
-        'size-full overflow-hidden rounded-lg border bg-background',
-        type === 'block' &&
-        'max-h-[40rem] prose-code:border-none prose-code:p-0',
-        type === 'component' && 'not-prose max-h-[32rem]',
-      )}
+      className={cn('size-full overflow-hidden rounded-lg border bg-background not-prose')}
     >
       <Tabs defaultValue="preview" className="size-full gap-0">
         <TabsList className="w-full rounded-none border-b">
