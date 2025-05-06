@@ -25,10 +25,9 @@ export const SandBox = block({
     </svg>
   ),
   schema: {
-    showcase: fields.relationship({
+    showcase: fields.text({
       label: 'Showcase Component',
-      description: 'Select a component to display',
-      collection: 'showcase',
+      description: 'Enter the name of the component to display (without .tsx extension)',
       validation: { isRequired: true }
     }),
     type: fields.select({
@@ -39,7 +38,6 @@ export const SandBox = block({
       ],
       defaultValue: 'block',
     }),
-
     code: fields.text({
       label: 'Code',
       description: 'Optional: If not provided, will use the component source code'

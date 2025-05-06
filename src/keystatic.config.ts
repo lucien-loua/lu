@@ -11,7 +11,6 @@ import {
   projects,
   experience,
   socialLinks,
-  showcase,
   posts
 } from '@/modules/keystatic/schema';
 
@@ -36,7 +35,6 @@ export default config({
     posts,
     projects,
     experience,
-    showcase,
   },
   singletons: {
     socialLinks,
