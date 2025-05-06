@@ -4,7 +4,8 @@ import {
 } from '@keystatic/core';
 import {
   SandBox,
-  Snippet
+  Snippet,
+  CodeBlock,
 } from '@/modules/keystatic/blocs';
 
 import {
@@ -17,12 +18,14 @@ import {
 export const markdocConfig = fields.markdoc.createMarkdocConfig({
   components: {
     SandBox,
-    Snippet
+    Snippet,
+    CodeBlock,
   },
   render: {
     tags: {
       SandBox: 'SandBox',
-      Snippet: 'Snippet'
+      Snippet: 'Snippet',
+      CodeBlock: 'CodeBlock',
     }
   }
 });

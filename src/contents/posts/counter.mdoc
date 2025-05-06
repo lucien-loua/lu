@@ -1,8 +1,118 @@
 ---
-title: Counter
+title: Understanding useState with an Interactive Counter
 ---
-Intro
+## Introduction
 
-## Hello le monde
+State management is a core concept in React. The `useState` hook allows you to create interactive, dynamic UIs by tracking and updating values over time. In this case study, we'll build a simple yet powerful **Counter** component to demonstrate how `useState` works under the hood, and how UI updates are triggered in response to user actions.
 
-{% SandBox showcase="counter" type="block" /%}
+---
+
+## What is `useState`?
+
+`useState` is a React Hook that lets you add state to functional components.\
+It returns a pair: the current state value, and a function to update it.
+
+**Example:**
+
+{% CodeBlock
+   code="const [count, setCount] = React.useState(0); "
+   language="tsx"
+   filename="index.tsx"
+   variant="compact" /%}
+
+- `count` is the current value (initially `0`)
+- `setCount` is a function you call to update `count`
+
+---
+
+## How State Changes Trigger UI Updates
+
+When you call `setCount(newValue)`, React schedules a re-render of your component.\
+On the next render, `count` will have the new value, and the UI will reflect this change.
+
+**Key points:**
+
+- State updates are **asynchronous** and **batched** for performance.
+- The component function is **re-executed** with the new state.
+- Only the affected part of the UI is updated (thanks to React's virtual DOM diffing).
+
+---
+
+## Live Example: Interactive Counter
+
+Below is a live demo. Try clicking the + and – buttons and watch how the number updates instantly.\
+This is powered by `useState`!
+
+{% SandBox showcase="Counter" type="block" /%}
+
+---
+
+## How It Works – Step by Step
+
+1. **Initialize state:**
+
+   {% CodeBlock
+      code="const [count, setCount] = React.useState(0)"
+      language="tsx"
+      filename="index.tsx"
+      variant="compact" /%}
+
+   - `count` starts at 0.
+
+1. **Update state on button click:**
+
+   {% CodeBlock
+      code="<button onClick={() => setCount(count + 1)}>+</button>    \n<button onClick={() => setCount(count - 1)}>-</button>"
+      language="tsx"
+      filename="index.tsx"
+      variant="compact" /%}
+
+   - When you click, `setCount` is called with the new value.
+
+1. **React re-renders the component:**
+
+   - The function runs again, but now `count` has the updated value.
+   - The UI shows the new number.
+
+1. **UI stays in sync with state:**
+
+   - The displayed value always matches the latest state.
+
+---
+
+## Why is This Powerful?
+
+- **Declarative:** You describe *what* you want to see, not *how* to update the DOM.
+- **Predictable:** The UI always matches your state.
+- **Reusable:** You can use `useState` for any value: numbers, strings, objects, arrays, etc.
+
+---
+
+## Try It Yourself
+
+Here's a minimal version of the Counter:
+
+{% CodeBlock
+   code="import React from 'react';\n\nexport default function Counter() {\n  const [count, setCount] = React.useState(0);\n  return (\n    <div>\n      <button onClick={() => setCount(count - 1)}>-</button>\n      <span>{count}</span>\n      <button onClick={() => setCount(count + 1)}>+</button>\n    </div>\n  );\n}"
+   language="tsx"
+   filename="index.tsx"
+   variant="default" /%}
+
+## Key Takeaways
+
+- `useState` lets you add state to functional components.
+- Calling the setter (`setCount`) triggers a re-render with the new value.
+- React updates only what's necessary in the DOM.
+- This pattern is the foundation for all interactive React UIs.
+
+---
+
+## Conclusion
+
+Understanding `useState` is essential for any React developer.\
+It's the first step to building dynamic, interactive, and modern web interfaces.\
+Experiment, break things, and see how state changes drive your UI!
+
+---
+
+*Want to see the full code? Click the "Code" tab above the demo!*

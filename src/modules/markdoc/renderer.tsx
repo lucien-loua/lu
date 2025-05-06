@@ -1,9 +1,9 @@
 import React from 'react';
 import Markdoc, { Node } from '@markdoc/markdoc';
 import { markdocConfig } from '@keystatic.config';
-import { resolveNodes } from './transformers';
 import { Snippet } from '@/components/blocs/snippet';
 import { SandBox } from '@/components/blocs/sandbox';
+import { CodeBlock } from '@/components/blocs/code';
 
 type Props = {
   node: Node;
@@ -18,12 +18,12 @@ export async function MarkdocRenderer(props: Props) {
     throw new Error('Invalid content');
   }
   const renderable = Markdoc.transform(node, markdocConfig);
-  const resolvedNode = await resolveNodes(renderable);
 
-  return Markdoc.renderers.react(resolvedNode, React, {
+  return Markdoc.renderers.react(renderable, React, {
     components: {
       SandBox,
-      Snippet
+      Snippet,
+      CodeBlock,
     }
   });
 }
