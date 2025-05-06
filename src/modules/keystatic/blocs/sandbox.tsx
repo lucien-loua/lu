@@ -1,7 +1,6 @@
 import { fields } from '@keystatic/core'
 import { block } from '@keystatic/core/content-components'
-import { SandBox as SandBoxComponent } from '@/components/sandbox'
-
+import { SandBox as SandBoxComponent } from '@/components/blocs/sandbox'
 
 export const SandBox = block({
   label: 'SandBox',
@@ -48,11 +47,7 @@ export const SandBox = block({
   },
   ContentView: ({ value }) => {
     return (
-      <SandBoxComponent
-        path={value.showcase}
-        type={value.type}
-        code={value.code}
-      />
+      <SandBoxComponent {...value} />
     );
   },
 })

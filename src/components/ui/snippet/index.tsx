@@ -17,7 +17,7 @@ export type SnippetProps = ComponentProps<typeof Tabs>;
 export const Snippet = ({ className, ...props }: SnippetProps) => (
   <Tabs
     className={cn(
-      'group w-full gap-0 overflow-hidden rounded-md border shadow-sm',
+      'group w-full gap-0 overflow-hidden rounded-md border',
       className
     )}
     {...props}
@@ -115,7 +115,7 @@ export const SnippetTabsContent = ({
 }: SnippetTabsContentProps) => (
   <TabsContent
     asChild
-    className={cn('mt-0 bg-background p-4 text-sm', className)}
+    className={cn('mt-0 mb-0 bg-background text-sm text-foreground', className)}
     {...props}
   >
     <pre>{children}</pre>

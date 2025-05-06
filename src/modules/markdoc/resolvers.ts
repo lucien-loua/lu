@@ -12,6 +12,12 @@ async function resolveShowcase(slug: string) {
 
 export const resolvers: Record<string, Resolver> = {
   SandBox: async (attrs) => ({
+    ...attrs,
     path: typeof attrs.showcase === 'string' ? await resolveShowcase(attrs.showcase) : '',
   }),
+  Snippet: async (attrs) => {
+    return {
+      ...attrs,
+    };
+  },
 };

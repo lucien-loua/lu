@@ -1,4 +1,12 @@
-import { config, fields } from '@keystatic/core';
+import {
+  config,
+  fields
+} from '@keystatic/core';
+import {
+  SandBox,
+  Snippet
+} from '@/modules/keystatic/blocs';
+
 import {
   projects,
   experience,
@@ -6,15 +14,16 @@ import {
   showcase,
   posts
 } from '@/modules/keystatic/schema';
-import { SandBox } from '@/modules/keystatic/blocks';
 
 export const markdocConfig = fields.markdoc.createMarkdocConfig({
   components: {
-    SandBox
+    SandBox,
+    Snippet
   },
   render: {
     tags: {
-      SandBox: 'SandBox'
+      SandBox: 'SandBox',
+      Snippet: 'Snippet'
     }
   }
 });

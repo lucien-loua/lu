@@ -14,15 +14,13 @@ import { PreviewRender } from './render';
 import React from 'react';
 
 type PreviewProps = {
-  path: string | null;
-  className?: string;
+  showcase: string | null;
   type?: 'component' | 'block';
   code?: string;
 };
 
 export const SandBox = ({
-  path = '',
-  className,
+  showcase = '',
   type = 'component',
   code = '',
 }: PreviewProps) => {
@@ -31,22 +29,22 @@ export const SandBox = ({
   const [componentCode, setComponentCode] = React.useState(code);
 
   React.useEffect(() => {
-    if (!path) {
-      setError('No component path provided');
+    if (!showcase) {
+      setError('No component to showcase');
       return;
     }
 
-    import(`@/showcase/${path}.tsx`).then(
+    import(`@/showcase/${showcase}.tsx`).then(
       (module) => {
         setComponent(() => module.default);
       }
     ).catch((error) => {
-      console.error(`Failed to load example component: ${path}`, error);
-      setError(`Failed to load component: ${path}`);
+      console.error(`Failed to load example component: ${showcase}`, error);
+      setError(`Failed to load component: ${showcase}`);
     });
 
     if (!code) {
-      fetch(`/api/source?path=${path}`)
+      fetch(`/api/source?path=${showcase}`)
         .then(res => res.text())
         .then(sourceCode => {
           setComponentCode(sourceCode);
@@ -55,7 +53,7 @@ export const SandBox = ({
           console.error('Failed to load source code:', error);
         });
     }
-  }, [path, code]);
+  }, [showcase, code]);
 
   if (error) {
     return (
@@ -73,7 +71,6 @@ export const SandBox = ({
           type === 'block' &&
           'max-h-[40rem] prose-code:border-none prose-code:p-0',
           type === 'component' && 'not-prose max-h-[32rem]',
-          className
         )}
       >
         <Tabs defaultValue="preview" className="h-32 gap-0">
@@ -120,7 +117,6 @@ export const SandBox = ({
         type === 'block' &&
         'max-h-[40rem] prose-code:border-none prose-code:p-0',
         type === 'component' && 'not-prose max-h-[32rem]',
-        className
       )}
     >
       <Tabs defaultValue="preview" className="size-full gap-0">
