@@ -1,4 +1,3 @@
-import { Spotlight } from "@/components/ui/spotlight";
 import { reader } from "@/lib/reader";
 import { Section } from "@/components/layout/section";
 
@@ -17,20 +16,16 @@ export async function ExperienceSection() {
 
 					return (
 						<a
-							className="relative overflow-hidden rounded-2xl bg-card/50 p-[5px]"
+							className="rounded-2xl bg-card border"
 							href={link}
 							target="_blank"
 							rel="noopener noreferrer"
 							key={experience.slug}
 						>
-							<Spotlight
-								className="from-primary via-primary/80 to-primary/60 blur-2xl"
-								size={64}
-							/>
-							<div className="relative h-full w-full rounded-[15px] bg-card p-4">
-								<div className="relative flex w-full flex-row justify-between">
+							<div className="relative h-full w-full p-3">
+								<div className="flex flex-row justify-between">
 									<div>
-										<h4 className="font-normal">{title}</h4>
+										<h4>{title}</h4>
 										<p className="text-muted-foreground">{company}</p>
 									</div>
 									<p className="text-muted-foreground">

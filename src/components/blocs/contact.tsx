@@ -16,7 +16,7 @@ function MagneticSocialLink({
 				href={link}
 				target="_blank"
 				rel="noopener noreferrer"
-				className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+				className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-secondary px-2.5 py-1 text-sm transition-colors duration-200 hover:bg-secondary/80"
 			>
 				{children}
 				<svg
@@ -44,9 +44,9 @@ export async function ContactSection() {
 	const socialLinks = data?.links ?? [];
 	return (
 		<Section>
-			<h3 className="mb-5 text-lg font-medium">Contact me</h3>
-			<p className="mb-5 text-zinc-600 dark:text-zinc-400">
-				<a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
+			<h3 className="text-lg mb-3 font-medium">Contact me</h3>
+			<p className="mb-3 text-muted-foreground">
+				<a className="underline" href={`mailto:${EMAIL}`}>
 					{EMAIL}
 				</a>
 			</p>

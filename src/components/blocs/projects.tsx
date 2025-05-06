@@ -32,7 +32,7 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 				/>
 			</MorphingDialogTrigger>
 			<MorphingDialogContainer>
-				<MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+				<MorphingDialogContent className="relative aspect-video rounded-2xl bg-card/25 p-1 ring-1 ring-ring/50 ring-inset">
 					<video
 						src={src}
 						autoPlay
@@ -42,7 +42,7 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 					/>
 				</MorphingDialogContent>
 				<MorphingDialogClose
-					className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+					className="fixed top-6 right-6 h-fit w-fit rounded-full bg-card/25 p-1"
 					variants={{
 						initial: { opacity: 0 },
 						animate: {
@@ -52,7 +52,7 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 						exit: { opacity: 0, transition: { duration: 0 } },
 					}}
 				>
-					<XIcon className="h-5 w-5 text-zinc-500" />
+					<XIcon className="h-5 w-5 text-muted-foreground" />
 				</MorphingDialogClose>
 			</MorphingDialogContainer>
 		</MorphingDialog>
@@ -70,21 +70,21 @@ export async function ProjectsSection() {
 					const link = project.entry.link ?? "";
 					const video = project.entry.video ?? "";
 					return (
-						<div key={project.slug} className="space-y-2">
-							<div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+						<div key={project.slug} className="space-y-3">
+							<div className="relative rounded-2xl bg-card/25 p-1 ring-1 ring-ring/50 ring-inset">
 								<ProjectVideo src={video} />
 							</div>
 							<div className="px-1">
 								<a
-									className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+									className="font-base group relative inline-block"
 									href={link}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
 									{name}
-									<span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50" />
+									<span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-foreground transition-all duration-200 group-hover:max-w-full" />
 								</a>
-								<p className="text-base text-zinc-600 dark:text-zinc-400">
+								<p className="text-base text-muted-foreground">
 									{description}
 								</p>
 							</div>
