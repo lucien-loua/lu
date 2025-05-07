@@ -11,13 +11,16 @@ const VARIANTS_CONTAINER = {
 	},
 };
 
-export function PageLayout({ children }: { children: React.ReactNode }) {
+interface PageLayoutProps extends React.ComponentProps<typeof motion.main> { }
+
+export function PageLayout({ children, ...props }: PageLayoutProps) {
 	return (
 		<motion.main
-			className="space-y-14"
+			className="space-y-14 py-12"
 			variants={VARIANTS_CONTAINER}
 			initial="hidden"
 			animate="visible"
+			{...props}
 		>
 			{children}
 		</motion.main>

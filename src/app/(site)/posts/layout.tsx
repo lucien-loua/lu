@@ -8,9 +8,9 @@ export default function LayoutBlogPost({
 }) {
 	return (
 		<>
-			<canvas className="pointer-events-none fixed left-0 top-0 z-10 h-10 w-full bg-gray-100 to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)] dark:bg-zinc-950" />
+			<canvas className="pointer-events-none fixed left-0 top-0 z-10 h-16 w-full bg-background to-transparent backdrop-blur-xl [-webkit-mask-image:linear-gradient(to_bottom,black,transparent)]" />
 			<ScrollProgress
-				className="fixed top-0 z-20 bg-gray-300 dark:bg-zinc-600"
+				className="fixed top-0 z-20 bg-chart-4"
 				springOptions={{
 					bounce: 0,
 				}}

@@ -8,8 +8,15 @@ export const experience = collection({
   schema: {
     company: fields.slug({ name: { label: "Company" } }),
     title: fields.text({ label: "Title" }),
-    start: fields.text({ label: "Start Year" }),
-    end: fields.text({ label: 'End Year (or "Present")' }),
+    start: fields.date({ label: "Start Date" }),
+    end: fields.date({
+      label: 'End Date',
+      description: 'Leave empty if currently working here'
+    }),
+    isPresent: fields.checkbox({
+      label: 'Currently Working Here',
+      description: 'Check if this is your current position'
+    }),
     link: fields.url({ label: "Company/Project Link" }),
   },
 })

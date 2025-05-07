@@ -71,7 +71,7 @@ function ThemeSwitch() {
 export function Footer() {
 
 	return (
-		<footer className="mt-24 border-t px-2 py-4">
+		<footer className="border-t py-3">
 			<div className="flex items-center justify-between">
 				<a
 					href="https://github.com/lucien-loua"

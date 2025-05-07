@@ -1,3 +1,4 @@
+import "../globals.css";
 import type { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Footer } from '@/components/layout/footer';
@@ -13,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "lU - Web Interface Designer",
+  title: "Lucien Loua - Web Interface Designer",
   description: "My personal website, where I share my thoughts and projects.",
   metadataBase: new URL(MAIN_URL),
 };
@@ -41,7 +42,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
           defaultTheme="system"
         >
           <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
-            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
+            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-3 pt-10">
               <Header />
               {children}
               <Footer />

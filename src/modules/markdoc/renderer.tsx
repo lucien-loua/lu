@@ -4,7 +4,9 @@ import { markdocConfig } from '@keystatic.config';
 import { Snippet } from '@/components/blocs/snippet';
 import { SandBox } from '@/components/blocs/sandbox';
 import { CodeBlock } from '@/components/blocs/code';
-
+import { IphoneBlock } from '@/components/blocs/devices/iphone';
+import { SafariBlock } from '@/components/blocs/devices/safari';
+import { AndroidBlock } from '@/components/blocs/devices/android';
 type Props = {
   node: Node;
 };
@@ -24,6 +26,9 @@ export async function MarkdocRenderer(props: Props) {
       SandBox,
       Snippet,
       CodeBlock,
+      IphoneBlock,
+      SafariBlock,
+      AndroidBlock,
     }
   });
 }

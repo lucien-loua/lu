@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
               key={i.toString()}
               style={{
                 width: "5px",
-                height: `${Math.sin(i * 0.2) * 100 + 500}px`,
+                height: `${Math.sin(i * 0.2) * 100 + 900}px`,
                 background: "#B0FC31",
                 margin: "0 8px",
                 borderRadius: "2px",
@@ -60,7 +60,6 @@ export async function GET(request: NextRequest) {
             display: 'flex',
             fontSize: 150,
             fontFamily: 'Outfit',
-            letterSpacing: '-0.05em',
             fontStyle: 'normal',
             color: 'white',
             lineHeight: '120px',

@@ -6,6 +6,9 @@ import {
   SandBox,
   Snippet,
   CodeBlock,
+  IphoneBlock,
+  SafariBlock,
+  AndroidBlock,
 } from '@/modules/keystatic/blocs';
 
 import {
@@ -14,21 +17,6 @@ import {
   socialLinks,
   posts
 } from '@/modules/keystatic/schema';
-
-export const markdocConfig = fields.markdoc.createMarkdocConfig({
-  components: {
-    SandBox,
-    Snippet,
-    CodeBlock,
-  },
-  render: {
-    tags: {
-      SandBox: 'SandBox',
-      Snippet: 'Snippet',
-      CodeBlock: 'CodeBlock',
-    }
-  }
-});
 
 export default config({
   storage: {
@@ -42,4 +30,31 @@ export default config({
   singletons: {
     socialLinks,
   },
+  ui: {
+    brand: {
+      name: "Lucien's Blog"
+    }
+  }
+});
+
+
+export const markdocConfig = fields.markdoc.createMarkdocConfig({
+  components: {
+    SandBox,
+    Snippet,
+    CodeBlock,
+    IphoneBlock,
+    SafariBlock,
+    AndroidBlock,
+  },
+  render: {
+    tags: {
+      SandBox: 'SandBox',
+      Snippet: 'Snippet',
+      CodeBlock: 'CodeBlock',
+      IphoneBlock: 'IphoneBlock',
+      SafariBlock: 'SafariBlock',
+      AndroidBlock: 'AndroidBlock',
+    }
+  }
 });
