@@ -1,6 +1,4 @@
 name: Omi3
-description: >-
-  Open-source project focused on building audio processing and playback
-  capabilities for web applications.
+description: Building audio processing and playback capabilities for web applications.
 link: https://omi3.ouestlabs.com
-video: https://cdn.ouestlabs.com/images/2025/05/02/omi3ui.mp4
+image: /images/omi3/image.png

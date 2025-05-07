@@ -1,4 +1,11 @@
-import { CodeBlock, SandBox, Snippet } from '@/modules/keystatic/blocs';
+import {
+	CodeBlock,
+	SandBox,
+	Snippet,
+	IphoneBlock,
+	SafariBlock,
+	AndroidBlock,
+} from '@/modules/keystatic/blocs';
 import { collection, fields } from '@keystatic/core';
 
 export const posts = collection({
@@ -19,6 +26,9 @@ export const posts = collection({
 				SandBox,
 				Snippet,
 				CodeBlock,
+				IphoneBlock,
+				AndroidBlock,
+				SafariBlock,
 			}
 		}),
 	},

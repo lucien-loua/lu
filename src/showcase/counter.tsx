@@ -70,4 +70,4 @@ export default function CounterShowcase() {
       <Counter />
     </section>
   );
-} 
+}
