@@ -9,6 +9,8 @@ import {
   IphoneBlock,
   SafariBlock,
   AndroidBlock,
+  VideoBlock,
+  ImageBlock,
 } from '@/modules/keystatic/blocs';
 
 import {
@@ -46,6 +48,8 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({
     IphoneBlock,
     SafariBlock,
     AndroidBlock,
+    VideoBlock,
+    ImageBlock,
   },
   render: {
     tags: {
@@ -55,6 +59,8 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({
       IphoneBlock: 'IphoneBlock',
       SafariBlock: 'SafariBlock',
       AndroidBlock: 'AndroidBlock',
+      VideoBlock: 'VideoBlock',
+      ImageBlock: 'ImageBlock',
     }
   }
 });

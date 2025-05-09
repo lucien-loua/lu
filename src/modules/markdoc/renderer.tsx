@@ -7,6 +7,8 @@ import { CodeBlock } from '@/components/blocs/code';
 import { IphoneBlock } from '@/components/blocs/devices/iphone';
 import { SafariBlock } from '@/components/blocs/devices/safari';
 import { AndroidBlock } from '@/components/blocs/devices/android';
+import { VideoBlock } from '@/components/blocs/media/video';
+import { ImageBlock } from '@/components/blocs/media/image';
 type Props = {
   node: Node;
 };
@@ -29,6 +31,8 @@ export async function MarkdocRenderer(props: Props) {
       IphoneBlock,
       SafariBlock,
       AndroidBlock,
+      VideoBlock,
+      ImageBlock,
     }
   });
 }

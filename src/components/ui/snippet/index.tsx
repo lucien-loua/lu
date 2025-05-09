@@ -85,7 +85,6 @@ export const SnippetCopyButton = ({
       variant="ghost"
       size="icon"
       onClick={copyToClipboard}
-      className="opacity-0 transition-opacity group-hover:opacity-100"
       {...props}
     >
       {children ?? icon}

@@ -5,6 +5,8 @@ import {
 	IphoneBlock,
 	SafariBlock,
 	AndroidBlock,
+	VideoBlock,
+	ImageBlock,
 } from '@/modules/keystatic/blocs';
 import { collection, fields } from '@keystatic/core';
 
@@ -29,6 +31,8 @@ export const posts = collection({
 				IphoneBlock,
 				AndroidBlock,
 				SafariBlock,
+				VideoBlock,
+				ImageBlock,
 			}
 		}),
 	},

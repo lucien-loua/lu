@@ -160,10 +160,9 @@ function Safari({
             width="1200"
             height="700"
             preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#roundedBottom)"
           >
             <video
-              className="size-full overflow-hidden object-cover"
+              className="size-full aspect-video overflow-hidden object-cover"
               src={videoUrl}
               autoPlay
               loop
