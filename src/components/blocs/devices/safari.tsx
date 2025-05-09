@@ -190,6 +190,6 @@ function Safari({
 
 export const SafariBlock = (props: SafariProps) => {
   return (
-    <Safari {...props} className="w-full h-full no-prose" />
+    <Safari {...props} className="w-full h-full not-prose" />
   );
 };

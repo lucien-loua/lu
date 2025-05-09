@@ -1,25 +1,11 @@
 import { fields } from '@keystatic/core'
 import { block } from '@keystatic/core/content-components'
 import { Snippet as SnippetComponent } from '@/components/blocs/snippet'
+import { Code } from 'lucide-react';
 
 export const Snippet = block({
   label: 'Snippet',
-  icon: (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="lucide lucide-code">
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
-    </svg>
-  ),
+  icon: <Code />,
   schema: {
     commands: fields.array(
       fields.object({
@@ -40,6 +26,10 @@ export const Snippet = block({
             { label: 'Box', value: 'box' },
             { label: 'Code', value: 'code' },
             { label: 'Terminal', value: 'terminal' },
+            { label: 'Npm', value: 'npm' },
+            { label: 'Pnpm', value: 'pnpm' },
+            { label: 'Yarn', value: 'yarn' },
+            { label: 'Bun', value: 'bun' },
           ],
           defaultValue: 'code'
         })

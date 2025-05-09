@@ -7,6 +7,7 @@ import {
   SnippetTabsTrigger,
   SnippetTabsContent
 } from '@/components/ui/snippet'
+import { SiBun, SiNpm, SiPnpm, SiYarn } from '@icons-pack/react-simple-icons';
 import { BoxIcon, CodeIcon, HeartIcon, TerminalIcon } from 'lucide-react';
 import { useState } from 'react';
 
@@ -26,6 +27,10 @@ const iconMap = {
   box: BoxIcon,
   code: CodeIcon,
   terminal: TerminalIcon,
+  npm: SiNpm,
+  pnpm: SiPnpm,
+  yarn: SiYarn,
+  bun: SiBun
 };
 
 export const Snippet = ({ commands, showCopyButton = true }: SnippetProps) => {
