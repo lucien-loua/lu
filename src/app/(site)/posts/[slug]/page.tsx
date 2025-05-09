@@ -53,7 +53,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       ],
       title: post.title,
       description: post.description,
-      siteName: 'Blog',
+      siteName: "lU's blog"
     },
   };
 }

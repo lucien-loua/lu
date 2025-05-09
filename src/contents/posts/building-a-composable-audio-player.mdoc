@@ -1,0 +1,202 @@
+---
+title: 'Building a Composable Audio Player: My Journey into Web Audio Development'
+description: >-
+  Join me on my journey of building a composable audio player. Learn from my
+  experiences in creating modular, reusable components for modern web audio
+  interfaces.
+---
+## My Story
+
+Hey there! 👋 I'm a developer who's been passionate about audio and web development. During the week, I code. On weekends, I produce music. These two worlds have always been separate for me, until I decided to bring them together.
+
+## The Spark
+
+It all started when I wanted to share my music with friends and family. I was producing tracks in my home studio, but sharing them was always a hassle. Existing platforms didn't quite meet my needs. I wanted something that would:
+
+- Show my music in its best light
+- Be easy to use for non-technical people
+- Feel personal and authentic
+- Work seamlessly across devices
+
+## From Ouest Audio to Omi3
+
+I started building **Ouest Audio**, a full-featured music streaming app. Here's what it looked like: [see it live](https://audio.ouestlabs.com)
+
+{% SafariBlock
+   url="https://audio.ouestlabs.com"
+   videoUrl="/videos/ouest-audio.mp4"
+   mode="simple" /%}
+
+### The Evolution
+
+Ouest Audio grew into a complex application with features like:
+
+- Playlists and queue management
+- Next/Previous track controls
+- Random playback
+- Multiple audio sources
+
+While these features were great for a full music streaming app, I realized that many developers just needed a solid foundation for audio playback. That's when I decided to extract the core audio functionality into a separate, composable library - `@omi3/ui`.
+
+### User Feedback That Shaped Omi3
+
+I shared early versions with my musician friends, and their feedback was very helpful:
+
+- "The player feels clunky on mobile"
+- "Why can't I easily share specific tracks?"
+- "I wish I could customize the player for my own music"
+- "I need a way to manage my playlists"
+
+## The Composable Approach
+
+Instead of building another monolithic audio player, I focused on creating something more flexible. My goal was to make audio development as simple as using React components, but with the freedom to:
+
+- Pick and choose what you need
+- Customize every piece
+- Own your code
+- Build your way
+
+Following the philosophy of [`shadcn`](https://ui.shadcn.com/docs), `@omi3/ui` components are designed to be copied into your project rather than installed as dependencies. This approach gives you complete control over the code and styling, making it easier to customize and maintain.
+
+## Breaking Down the Components
+
+Let me walk you through how I built each piece. Note that `@omi3/ui` is currently focused on single-file playback - features like playlists and queue management are planned for future releases.
+
+### The Complete Player
+
+Here's what I ended up with. Try it out - upload any audio file and play around:
+
+{% SandBox showcase="audio-player" type="component" /%}
+
+### Core Components
+
+The player above is built from several components that work together:
+
+#### File Input: The Gateway
+
+- File validation
+- Size limits
+- Multiple format support
+
+#### Controls: Making it Play
+
+- Space to play/pause
+- Visual feedback
+
+#### Seek Bar: Finding Your Place
+
+- Smooth dragging
+- Human-readable time format
+- Real-time updates
+
+#### Track Info: The Details Matter
+
+- Track title and artist
+- Duration display
+- Clean layout
+
+#### Visualizer: Making it Pretty
+
+- Real-time frequency analysis
+- Smooth animations
+- Customizable colors
+- Responsive design
+
+#### Volume: The Fine Control
+
+- Quick mute toggle
+- Visual feedback
+
+## Installation & Usage
+
+### Adding Components
+
+To add components from the Omi3 UI registry to your project, use the Shadcn CLI:
+
+{% Snippet
+   commands=[{label: "pnpm", code: "pnpm dlx shadcn@latest add 'https://omi3.ouestlabs.com/registry/audio-player'\n", icon: "pnpm"}, {label: "npm", code: "npx shadcn@latest add 'https://omi3.ouestlabs.com/registry/audio-player'\n", icon: "npm"}, {label: "bun", code: "bunx --bun shadcn@latest add 'https://omi3.ouestlabs.com/registry/audio-player'\n", icon: "bun"}]
+   showCopyButton=true /%}
+
+This command will copy the component's source code and dependencies directly into your project.
+
+### Basic Usage
+
+After adding the audio-player, you can use it like any other component:
+
+{% CodeBlock
+   code="import { AudioPlayer } from '@/components/audio';\n\nexport default function MyPage() {\n  return (\n    <main className=\"container mx-auto p-4\">\n      <h1 className=\"text-2xl font-bold mb-4\">My Awesome Audio Player</h1>\n      {/*\n        AudioPlayer includes its own Provider by default for quick use.\n        See the component's code comments for how to move the Provider\n        to a layout for global state if needed.\n      */}\n      <AudioPlayer />\n    </main>\n  );\n}"
+   language="tsx"
+   filename="index.tsx"
+   variant="default" /%}
+
+### Available Components
+
+The audio-player block includes:
+
+- File Input (AudioFileInput)
+- Track Information Display (AudioTrackInfo)
+- Seek Bar (AudioSeekBar)
+- Playback Controls (AudioControls)
+- Volume Control (AudioVolume)
+- Audio Visualizer (AudioVisualizer)
+
+All components rely on [`@omi3/audio`](https://www.npmjs.com/package/@omi3/audio) for core functionality and state management via React Context.
+
+### Customization
+
+Since the component code is copied directly into your project (e.g., into `./components/audio/`), you can modify the source files freely to suit your specific needs. Adjust styles, change behavior, or extend functionality as required.
+
+## Lessons Learned
+
+### Technical Insights
+
+- Web Audio API is powerful but complex
+- Browser compatibility is a constant battle
+- State management gets messy quickly
+- Performance optimization is crucial
+
+### Common Challenges
+
+- Resources need cleanup
+- Browser autoplay policies are strict
+- Audio context can be suspended
+- Error states need proper handling
+
+### Best Practices
+
+- Keep the API simple and intuitive
+- TypeScript is your friend
+- Error handling is crucial
+- Mobile-first is the way
+- Accessibility isn't optional
+
+## The Future
+
+This project has been a journey of combining my two passions: music and development. Over the past two years, I've spent more time coding than producing music, but the insights from both worlds have been invaluable.
+
+### What's Next for `@omi3/ui`
+
+While `@omi3/ui` currently focuses on single-file playback, I'm working on bringing more features from **Ouest Audio**:
+
+- Playlist support
+- Queue management
+- Next/Previous track controls
+- Random playback
+- Multiple audio source support
+
+These features require more complex state management and audio handling, so I'm taking the time to implement them properly. Stay tuned for updates!
+
+## Join Me!
+
+`omi3` is open source, and I'd love your help! Whether you're:
+
+- A musician looking to share your work
+- A developer with ideas
+- Someone who found a bug
+- Just curious about web audio
+
+I'm here to help and learn together.
+
+## Resources
+
+- [GitHub Repository](https://github.com/ouestlabs/omi3) - Come say hi!

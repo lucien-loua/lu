@@ -15,7 +15,7 @@ export default function LayoutBlogPost({
 					bounce: 0,
 				}}
 			/>
-			<div className="absolute right-4 top-24">
+			<div className="absolute right-4 top-12">
 				<CopyButton />
 			</div>
 			{children}

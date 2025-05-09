@@ -16,6 +16,7 @@ export const CodeBlock = block({
     language: fields.select({
       label: 'Language',
       options: [
+        { label: 'Bash', value: 'sh' },
         { label: 'TypeScript', value: 'tsx' },
         { label: 'JavaScript', value: 'js' },
         { label: 'CSS', value: 'css' },

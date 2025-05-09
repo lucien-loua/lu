@@ -12,10 +12,9 @@ export const projects = collection({
       multiline: true,
     }),
     link: fields.url({ label: "Project Link" }),
-    image: fields.image({
-      label: "Image",
-      directory: "public/images",
-      publicPath: "/images",
+    video: fields.url({
+      label: "Video",
+      description: "URL of the video to display",
     }),
   },
-})		
+})
